@@ -10,7 +10,7 @@ data class Drawer(
 val drawerContent = listOf(
     Drawer(
         R.drawable.profile_icon,
-        "Мой профиль"
+        "АгроСовет"
     ),
     Drawer(
         R.drawable.offer_icon,
@@ -19,5 +19,9 @@ val drawerContent = listOf(
     Drawer(
         R.drawable.privacy_icon,
         "Правила"
+    ),
+    Drawer(
+        R.drawable.privacy_icon,
+        "Выход"
     ),
 )

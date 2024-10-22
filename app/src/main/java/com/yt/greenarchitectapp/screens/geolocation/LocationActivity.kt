@@ -18,7 +18,6 @@ class LocationActivity : BaseActivity() {
         Surface(
             modifier = Modifier
                 .fillMaxSize()
-                .background(lightGray)
         ) {
             LocationNavigation(navHostController = navHostController)
         }

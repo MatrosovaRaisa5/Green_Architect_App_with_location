@@ -171,11 +171,6 @@ object RegisterScreen : Screen {
         onclick: () -> Unit
     ) {
 
-        val focusRequester = FocusRequester()
-
-        LaunchedEffect(key1 = Unit){
-            focusRequester.requestFocus()
-        }
 
         Column(
             modifier = Modifier
@@ -188,7 +183,7 @@ object RegisterScreen : Screen {
                     .padding(vertical = 10.dp)
             ) {
                 Text15_600(text = "Email", color = Color(0xFF4E6B00))
-                CommonTextField(text = email, modifier = Modifier.focusRequester(focusRequester))
+                CommonTextField(text = email)
             }
 
             Column(

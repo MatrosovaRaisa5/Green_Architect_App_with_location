@@ -26,7 +26,6 @@ class HomeActivity : BaseActivity() {
         Surface(
             modifier = Modifier
                 .fillMaxSize()
-                .background(lightGray)
         ) {
             Scaffold(
                 bottomBar = {
@@ -35,7 +34,7 @@ class HomeActivity : BaseActivity() {
                 drawerContent = {
                     Spacer(modifier = Modifier.height(20.dp))
                     drawerContent.forEach {
-                        DrawerContent(drawer = it, isline = it.name != "Правила")
+                        DrawerContent(drawer = it, isline = it.name != "Выход")
                     }
                 },
                 scaffoldState = scaffoldState,

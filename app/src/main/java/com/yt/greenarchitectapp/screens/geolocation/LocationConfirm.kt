@@ -66,11 +66,6 @@ fun LocationConfirm(cityName: String, navController: NavHostController) {
     var showRectangle by remember { mutableStateOf(false) }
 
     val context = LocalContext.current
-    val gradient = Brush.linearGradient(
-        colors = listOf(Color(0xFFF8EF42), Color(0xFF0FD64F)),
-        start = Offset(0f, 0f),
-        end = Offset(1000f, 2000f)
-    )
 
     val configuration = LocalConfiguration.current
     val screenWidth = configuration.screenWidthDp
