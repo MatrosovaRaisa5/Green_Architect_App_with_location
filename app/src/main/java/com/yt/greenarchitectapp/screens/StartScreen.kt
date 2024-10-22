@@ -55,7 +55,7 @@ object StartScreen : Screen {
                     }
 
 
-                    Spacer(modifier = Modifier.height(230.dp))
+                    Spacer(modifier = Modifier.height(240.dp))
 
                     AnimatedText(
                         text = "Садоводство без границ!",
