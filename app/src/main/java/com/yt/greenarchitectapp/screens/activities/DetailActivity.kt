@@ -30,7 +30,7 @@ class DetailActivity : BaseActivity() {
     override fun Content() {
         Surface {
             Box(modifier = Modifier.fillMaxSize()){
-                Image(painter = painterResource(id=R.drawable.fon),
+                Image(painter = painterResource(id=R.drawable.detailfon),
                     contentDescription = "Background Image",
                     contentScale = ContentScale.Crop,
                     modifier = Modifier.fillMaxSize())

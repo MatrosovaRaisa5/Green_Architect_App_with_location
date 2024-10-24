@@ -62,7 +62,7 @@ fun CitiesList(navController: NavHostController) {
     }
     Box(modifier = Modifier.fillMaxSize()) {
         Image(
-            painter = painterResource(id = R.drawable.regfon),
+            painter = painterResource(id = R.drawable.citiesfon),
             contentDescription = "Background Image",
             contentScale = ContentScale.Crop,
             modifier = Modifier.fillMaxSize()
