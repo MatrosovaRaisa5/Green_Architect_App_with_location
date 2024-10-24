@@ -28,7 +28,7 @@ class CartActivity : BaseActivity() {
     override fun Content() {
         Surface {
             Box(modifier = Modifier.fillMaxSize()){
-                Image(painter = painterResource(id=R.drawable.fon),
+                Image(painter = painterResource(id=R.drawable.regfon),
                     contentDescription = "Background Image",
                     contentScale = ContentScale.Crop,
                     modifier = Modifier.fillMaxSize())
