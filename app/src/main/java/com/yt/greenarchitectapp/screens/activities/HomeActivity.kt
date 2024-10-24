@@ -6,6 +6,7 @@ import androidx.compose.foundation.layout.*
 import androidx.compose.material.*
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
 import androidx.navigation.compose.rememberNavController
 import com.yt.greenarchitectapp.BaseActivity
@@ -38,7 +39,7 @@ class HomeActivity : BaseActivity() {
                     }
                 },
                 scaffoldState = scaffoldState,
-                drawerBackgroundColor = orange
+                drawerBackgroundColor = Color(0xFF5B9448)
                 ) {
                 HomeNavigation(navHostController = navHostController,scaffoldState)
             }

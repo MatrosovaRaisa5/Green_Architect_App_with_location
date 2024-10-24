@@ -39,7 +39,7 @@ class DetailActivity : BaseActivity() {
                 modifier = Modifier
                     .fillMaxSize()
             ) {
-                val data: Vegetables= intent.extras?.getParcelable("data")!!
+                val data2: Vegetables= intent.extras?.getParcelable("data2")!!
                 item {
 
                     Row(
@@ -66,8 +66,8 @@ class DetailActivity : BaseActivity() {
                     ) {
 
 
-                        HorizontalPager(count = data.listOFImages.size, state = pager) { index ->
-                            ImagePagerUi(data.listOFImages[index])
+                        HorizontalPager(count = data2.listOFImages.size, state = pager) { index ->
+                            ImagePagerUi(data2.listOFImages[index])
                         }
                         Spacer(modifier = Modifier.height(15.dp))
 
@@ -79,7 +79,7 @@ class DetailActivity : BaseActivity() {
                         Spacer(modifier = Modifier.height(0.dp))
 
                         Text28_600(
-                            text = data.name,
+                            text = data2.name,
                             color = Color.Black,
 
                         )
@@ -94,7 +94,7 @@ class DetailActivity : BaseActivity() {
                     ) {
                         Text17_600(text = "Информация о растении", color = Color.Black)
                         Text15_400(
-                            text = data.info,
+                            text = data2.info,
                             color = textGray,
                             modifier = Modifier.padding(top = 5.dp)
                         )
@@ -109,7 +109,7 @@ class DetailActivity : BaseActivity() {
                     ) {
                         Text17_600(text = "Где найти?", color = Color.Black)
                         Text15_400(
-                            text = data.returnPlaces,
+                            text = data2.returnPlaces,
                             color = textGray,
                             modifier = Modifier.padding(top = 5.dp)
                         )

@@ -31,6 +31,7 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.yt.greenarchitectapp.R
 import com.yt.greenarchitectapp.model.Drawer
+import com.yt.greenarchitectapp.model.Popular
 import com.yt.greenarchitectapp.model.Vegetables
 import com.yt.greenarchitectapp.ui.theme.*
 import kotlinx.coroutines.delay
@@ -62,7 +63,7 @@ fun Text13_400(
 @Composable
 fun Text22_700(
     text: String,
-    color: Color = Color.White,
+    color: Color = Color.Black,
     modifier: Modifier = Modifier
 ) {
     Text(text = text, color = color, style = detailTypography.h2, modifier = modifier)
@@ -308,6 +309,7 @@ fun CommonIconButton(
 
 }
 
+
 @Composable
 fun CommonSearchBar(
     text: MutableState<String>,
@@ -418,6 +420,46 @@ fun FoodEachRow(
     }
 
 }
+
+@Composable
+fun PopularEachRow(
+    popular: Popular,
+    onClick: () -> Unit = {}
+) {
+
+    Card(
+        elevation = 0.dp,
+        shape = RoundedCornerShape(30.dp),
+        modifier = Modifier.padding(10.dp)
+    ) {
+        Box(modifier = Modifier
+            .background(Color(0xFFA4C897))
+            .NoRippleEffect {
+                onClick()
+            }
+        ) {
+            Column(
+                horizontalAlignment = CenterHorizontally,
+                modifier = Modifier.padding(vertical = 20.dp, horizontal = 20.dp)
+            ) {
+                Image(
+                    painter = painterResource(id = popular.image),
+                    contentDescription = "",
+                    Modifier.size(170.dp)
+                )
+                Spacer(modifier = Modifier.height(10.dp))
+                Text22_600(
+                    text = popular.name,
+                    color = Color.Black,
+                    modifier = Modifier.align(CenterHorizontally)
+                )
+                Spacer(modifier = Modifier.height(5.dp))
+            }
+        }
+    }
+
+}
+
 
 @Composable
 fun DrawerContent(
