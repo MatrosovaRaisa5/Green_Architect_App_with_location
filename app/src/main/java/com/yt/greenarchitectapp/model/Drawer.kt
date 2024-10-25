@@ -21,7 +21,7 @@ val drawerContent = listOf(
         "Правила"
     ),
     Drawer(
-        R.drawable.privacy_icon,
+        R.drawable.exit_icon,
         "Выход"
     ),
 )
