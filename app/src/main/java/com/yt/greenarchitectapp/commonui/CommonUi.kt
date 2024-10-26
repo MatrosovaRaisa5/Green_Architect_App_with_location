@@ -99,7 +99,7 @@ fun Text34_700(
 @Composable
 fun Text17_700(
     text: String,
-    color: Color = Color.White,
+    color: Color = Color.Black,
     modifier: Modifier = Modifier
 ) {
     Text(text = text, color = color, style = Typography.h6, modifier = modifier)

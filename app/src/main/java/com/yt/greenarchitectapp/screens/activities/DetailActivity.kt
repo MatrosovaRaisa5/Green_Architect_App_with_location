@@ -129,7 +129,7 @@ class DetailActivity : BaseActivity() {
                             .fillMaxWidth()
                             .padding(vertical = 10.dp, horizontal = 30.dp)
                     ) {
-                        Text17_600(text = "Где найти?", color = Color.Black)
+                        Text17_600(text = "Агрофирмы (сайты)", color = Color.Black)
                         getNurseriesByCity(savedCity).forEach { nursery ->
                             Text15_400(
                                 text = nursery.name,
@@ -152,20 +152,13 @@ class DetailActivity : BaseActivity() {
                             .padding(horizontal = 30.dp)
                     ) {
                         Spacer(modifier = Modifier.height(10.dp))
-                        Text17_600(text = "Питомники рядом", color = Color.Black)
+                        Text17_600(text = "Питомники поблизости", color = Color.Black)
                         MapViewComposable()
                     }
+                    Spacer(modifier = Modifier.height(40.dp))
                 }
 
-                item {
-                    Spacer(modifier = Modifier.height(15.dp))
-                    CommonButton(
-                        text = "Добавить в бронь",
-                        backgroundColor = orange,
-                        foregroundColor = Color.White
-                    )
-                    Spacer(modifier = Modifier.height(15.dp))
-                }
+
             }
         }
     }

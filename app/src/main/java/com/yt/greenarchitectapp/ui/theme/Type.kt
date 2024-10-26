@@ -53,9 +53,9 @@ val Typography = Typography(
     ),
     h6 = TextStyle(
         fontFamily = FontFamily.Default,
-        fontWeight = FontWeight.W700,
+        fontWeight = FontWeight.W500,
         fontSize = 17.sp,
-        color = Color.White
+        color = Color.Black
     ),
 )
 
