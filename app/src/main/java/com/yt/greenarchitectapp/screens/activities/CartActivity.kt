@@ -1,7 +1,9 @@
 package com.yt.greenarchitectapp.screens.activities
 
+import android.content.Intent
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
@@ -13,6 +15,7 @@ import androidx.compose.ui.Alignment.Companion.CenterVertically
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
 import com.yt.greenarchitectapp.BaseActivity
@@ -28,12 +31,15 @@ class CartActivity : BaseActivity() {
     @Composable
     override fun Content() {
         Surface {
-            Box(modifier = Modifier.fillMaxSize()){
-                Image(painter = painterResource(id=R.drawable.regfon),
+            Box(modifier = Modifier.fillMaxSize()) {
+                Image(
+                    painter = painterResource(id = R.drawable.regfon),
                     contentDescription = "Background Image",
                     contentScale = ContentScale.Crop,
-                    modifier = Modifier.fillMaxSize())
+                    modifier = Modifier.fillMaxSize()
+                )
             }
+            val context = LocalContext.current
             Column(
                 modifier = Modifier
                     .fillMaxSize()
@@ -46,11 +52,15 @@ class CartActivity : BaseActivity() {
                     }
 
                     LazyColumn {
-                        items(listOfVegetables) { vegetables ->
-                            EachRow(vegetables = vegetables)
+                        items(listOfVegetables) { vegetable ->
+                            EachRow(vegetables = vegetable) { selectedVegetable ->
+                                val intent = Intent(context, DetailActivity::class.java).apply {
+                                    putExtra("data2", selectedVegetable)
+                                }
+                                context.startActivity(intent)
+                            }
                         }
                     }
-
                 }
             }
         }
@@ -58,12 +68,14 @@ class CartActivity : BaseActivity() {
 
     @Composable
     fun EachRow(
-        vegetables: Vegetables
+        vegetables: Vegetables,
+        onClick: (Vegetables) -> Unit
     ) {
         Card(
             modifier = Modifier
                 .fillMaxWidth()
-                .padding(vertical = 10.dp),
+                .padding(vertical = 10.dp)
+                .clickable { onClick(vegetables) },
             elevation = 1.dp,
             shape = RoundedCornerShape(20.dp)
         ) {
