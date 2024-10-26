@@ -1,5 +1,7 @@
 package com.yt.greenarchitectapp.screens.geolocation
 
+import android.content.Context
+import android.content.SharedPreferences
 import androidx.compose.foundation.Image
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.foundation.background
@@ -151,7 +153,7 @@ fun LocationConfirm(cityName: String, navController: NavHostController) {
                 Button(onClick =
                 {
                     if (cities.contains(cityName)) {
-                        // Здесь должен быть переход на каталог
+                        saveCityToPreferences(context, cityName)
                         context.launchActivity<HomeActivity> { }
                     } else {
                         showRectangle = true
@@ -229,3 +231,11 @@ fun LocationConfirm(cityName: String, navController: NavHostController) {
         }
     }
 }
+
+fun saveCityToPreferences(context: Context, cityName: String) {
+    val sharedPreferences: SharedPreferences = context.getSharedPreferences("user_prefs", Context.MODE_PRIVATE)
+    val editor = sharedPreferences.edit()
+    editor.putString("city_name", cityName)
+    editor.apply()
+}
+
