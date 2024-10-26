@@ -1,8 +1,10 @@
 package com.yt.greenarchitectapp.screens.activities
 
+import android.Manifest
 import android.content.Context
 import android.content.Intent
 import android.content.SharedPreferences
+import android.content.pm.PackageManager
 import android.net.Uri
 import android.util.Log
 import androidx.compose.foundation.BorderStroke
@@ -15,6 +17,7 @@ import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.Surface
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
@@ -29,10 +32,12 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.viewinterop.AndroidView
+import androidx.core.content.ContextCompat
 import com.google.accompanist.pager.ExperimentalPagerApi
 import com.google.accompanist.pager.HorizontalPager
 import com.google.accompanist.pager.HorizontalPagerIndicator
 import com.google.accompanist.pager.rememberPagerState
+import com.google.android.gms.location.LocationServices
 import com.yt.greenarchitectapp.BaseActivity
 import com.yt.greenarchitectapp.commonui.*
 import com.yt.greenarchitectapp.model.Vegetables
@@ -341,6 +346,27 @@ fun MapViewComposable() {
         "Норильск" to GeoPoint(69.3558, 88.1893)
     )
     val cityLocation = cityCoordinates[savedCity] ?: GeoPoint(55.7558, 37.6173)
+    val fusedLocationClient = remember { LocationServices.getFusedLocationProviderClient(context) }
+
+    val hasLocationPermissions = remember {
+        ContextCompat.checkSelfPermission(context, Manifest.permission.ACCESS_FINE_LOCATION) == PackageManager.PERMISSION_GRANTED
+    }
+
+    var userLocation by remember { mutableStateOf<GeoPoint?>(null) }
+
+    LaunchedEffect(hasLocationPermissions) {
+        if (hasLocationPermissions) {
+            fusedLocationClient.lastLocation.addOnSuccessListener { location ->
+                if (location != null) {
+                    userLocation = GeoPoint(location.latitude, location.longitude)
+                }
+            }
+        }
+    }
+
+    val mapView = remember { MapView(context) }
+    val initialLocation = userLocation ?: cityLocation
+
     Box(
         modifier = Modifier
             .fillMaxWidth()
@@ -349,12 +375,23 @@ fun MapViewComposable() {
             .clip(RoundedCornerShape(8.dp))
     ) {
         AndroidView(factory = {
-            MapView(context).apply {
+            mapView.apply {
                 Configuration.getInstance().load(context, context.getSharedPreferences("prefs", 0))
                 val mapController = this.controller
                 mapController.setZoom(14.0)
-                controller.setCenter(cityLocation)
+                controller.setCenter(initialLocation)
                 setMultiTouchControls(true)
+
+                val markerPosition = userLocation ?: cityLocation
+
+                val userLocationMarker = Marker(this).apply {
+                    position = markerPosition
+                    title = "Вы здесь"
+                    setAnchor(Marker.ANCHOR_CENTER, Marker.ANCHOR_BOTTOM)
+                    icon = context.resources.getDrawable(R.drawable.housemarker, context.theme)
+                }
+                overlays.add(userLocationMarker)
+                this.controller.setCenter(markerPosition)
 
                 nurseries[savedCity]?.forEachIndexed { index, geoPoint ->
                     val marker = Marker(this)
@@ -374,10 +411,20 @@ fun MapViewComposable() {
                     }
                     overlays.add(marker)
                 }
-
                 invalidate()
             }
         }, modifier = Modifier.fillMaxSize())
+        LaunchedEffect(userLocation) {
+            userLocation?.let { location ->
+                mapView.overlays.forEach { overlay ->
+                    if (overlay is Marker && overlay.title == "Вы здесь") {
+                        overlay.position = location
+                        mapView.controller.setCenter(location)
+                        mapView.invalidate()
+                    }
+                }
+            }
+        }
     }
 }
 
