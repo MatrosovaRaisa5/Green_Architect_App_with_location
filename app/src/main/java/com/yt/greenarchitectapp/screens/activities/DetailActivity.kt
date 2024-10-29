@@ -398,9 +398,14 @@ fun MapViewComposable() {
                     marker.icon = context.resources.getDrawable(iconRes, context.theme)
 
                     marker.setOnMarkerClickListener { _, _ ->
-                        // Передай данные в страницу
-                        val intent = Intent(context, GreyActivity::class.java)
-                        context.startActivity(intent)
+                        // Проверяем, является ли маркер серым
+                        if (iconRes == R.drawable.graymarker) {
+                            // Передай данные в страницу
+                            val intent = Intent(context, GreyActivity::class.java)
+                            context.startActivity(intent)
+                        } else {
+                            Log.d("123", "Красный маркер нажат, ничего не происходит")
+                        }
                         true
                     }
                     overlays.add(marker)
