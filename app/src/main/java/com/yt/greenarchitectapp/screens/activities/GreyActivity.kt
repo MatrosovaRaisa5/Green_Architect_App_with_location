@@ -12,7 +12,7 @@ class GreyActivity : ComponentActivity() {
         super.onCreate(savedInstanceState)
         setContent {
             Surface {
-                Text(text = "Страничка GreyActivity")
+                Text(text = "Страничка Настасьи")
             }
         }
     }
