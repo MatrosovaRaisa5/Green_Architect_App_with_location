@@ -398,8 +398,9 @@ fun MapViewComposable() {
                     marker.icon = context.resources.getDrawable(iconRes, context.theme)
 
                     marker.setOnMarkerClickListener { _, _ ->
-                        Log.d("123", "testMarkerClick")
-                        // Здесь переход на следующий экран
+                        // Передай данные в страницу
+                        val intent = Intent(context, GreyActivity::class.java)
+                        context.startActivity(intent)
                         true
                     }
                     overlays.add(marker)

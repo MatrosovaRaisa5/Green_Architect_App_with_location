@@ -27,6 +27,9 @@
             android:screenOrientation="portrait" />
         <activity
             android:name="com.yt.greenarchitectapp.screens.activities.DetailActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="com.yt.greenarchitectapp.screens.activities.GreyActivity"
             android:exported="true"
             android:screenOrientation="portrait" />
         <activity
