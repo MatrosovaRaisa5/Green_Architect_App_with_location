@@ -385,11 +385,14 @@ fun MapViewComposable() {
                 }
                 overlays.add(userLocationMarker)
                 this.controller.setCenter(markerPosition)
+                val nurseriesList = getNurseriesByCity(savedCity)
 
-                nurseries[savedCity]?.forEachIndexed { index, geoPoint ->
+
+
+                    nurseries[savedCity]?.forEachIndexed { index, geoPoint ->
                     val marker = Marker(this)
                     marker.position = geoPoint
-                    marker.title = "Питомник ${index + 1}"
+                    marker.title = nurseriesList[index].name
                     marker.setAnchor(Marker.ANCHOR_CENTER, Marker.ANCHOR_BOTTOM)
                     val iconRes = when (index % 2) {
                         0 -> R.drawable.redmarker
@@ -401,7 +404,9 @@ fun MapViewComposable() {
                         // Проверяем, является ли маркер серым
                         if (iconRes == R.drawable.graymarker) {
                             // Передай данные в страницу
-                            val intent = Intent(context, GreyActivity::class.java)
+                            val intent = Intent(context, GreyActivity::class.java).apply{
+                                putExtra("nursery_name", marker.title)
+                            }
                             context.startActivity(intent)
                         } else {
                             Log.d("123", "Красный маркер нажат, ничего не происходит")
