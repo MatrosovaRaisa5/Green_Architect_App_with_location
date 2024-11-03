@@ -54,6 +54,19 @@ fun Text65_800(
 }
 
 @Composable
+fun Text67_800(
+    text: String,
+    color: Color = Color.White,
+    modifier: Modifier = Modifier
+) {
+    Text(
+        text = text,
+        color = color,
+        style = Typography.h1,
+        modifier = modifier
+    )
+}
+@Composable
 fun Text13_400(
     text: String,
     color: Color = Color.White,
