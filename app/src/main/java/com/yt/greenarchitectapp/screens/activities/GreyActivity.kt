@@ -12,9 +12,14 @@ import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.material.Button
+import androidx.compose.material.ButtonDefaults
 import androidx.compose.material.Card
+import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Surface
+import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.ui.Alignment
 import androidx.compose.ui.Alignment.Companion.CenterVertically
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
@@ -29,6 +34,7 @@ import com.yt.greenarchitectapp.model.Vegetables
 import com.yt.greenarchitectapp.model.listOfVegetables
 
 import com.yt.greenarchitectapp.R
+import com.yt.greenarchitectapp.commonui.CommonButton
 import com.yt.greenarchitectapp.commonui.CommonIconButton
 import com.yt.greenarchitectapp.commonui.Text22_700
 import com.yt.greenarchitectapp.commonui.Text34_700
@@ -40,19 +46,16 @@ import com.yt.greenarchitectapp.ui.theme.Purple700
 import com.yt.greenarchitectapp.ui.theme.orange
 import com.yt.greenarchitectapp.utils.launchActivity
 import kotlinx.coroutines.launch
-
 class GreyActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
-
-
-    super.onCreate(savedInstanceState)
+        super.onCreate(savedInstanceState)
         setContent {
-            Content() // Вызов вашего Composable
+            Content()
         }
     }
 
     @Composable
-    fun Content() { // Удален модификатор override
+    fun Content() {
         Surface {
             Box(modifier = Modifier.fillMaxSize()) {
                 Image(
@@ -61,79 +64,76 @@ class GreyActivity : ComponentActivity() {
                     contentScale = ContentScale.Crop,
                     modifier = Modifier.fillMaxSize()
                 )
-            }
-            val context = LocalContext.current
-            val nurseryName = intent.getStringExtra("nursery_name")
 
-            // Используйте nurseryName по вашему усмотрению
-            if (nurseryName != null) {
-                    Text34_700(
-                        text = nurseryName,
-                        color = Color.Black,
-                        modifier = Modifier.padding(start = 20.dp)
-                    )
-            }
-            Column(
-                modifier = Modifier
-                    .fillMaxSize()
-                    .padding(20.dp),
-                verticalArrangement = Arrangement.SpaceBetween
-            ) {
-                Column {
-                    CommonHeader(text = "") {
-                        finish()
-                    }
+                val context = LocalContext.current
+                val nurseryName = intent.getStringExtra("nursery_name")
 
-                    LazyColumn(
-                        modifier = Modifier
-                            .fillMaxSize()
-                            .padding(10.dp),
-                        verticalArrangement = Arrangement.spacedBy(10.dp)
+                Column(
+                    modifier = Modifier
+                        .fillMaxSize()
+                        .padding(16.dp),
+                    verticalArrangement = Arrangement.SpaceBetween
+                ) {
+                    Column(
+                        horizontalAlignment = Alignment.CenterHorizontally,
+                        modifier = Modifier.weight(1f)
                     ) {
-                        item {
-                            Row(
-                                modifier = Modifier
-                                    .fillMaxWidth()
-                                    .padding(start = 10.dp, top = 10.dp, bottom = 10.dp),
-                                horizontalArrangement = Arrangement.Start
-                            ) {
+                        CommonHeader(text = "") {
+                            finish()
+                        }
 
-                                Spacer(modifier = Modifier.width(10.dp))
+                        LazyColumn(
+                            modifier = Modifier.fillMaxWidth(),
+                            verticalArrangement = Arrangement.spacedBy(10.dp)
+                        ) {
+                            item {
+                                if (nurseryName != null) {
+                                    Text67_800(
+                                        text = nurseryName,
+                                        color = Color.Black,
+                                        modifier = Modifier.padding(horizontal = 20.dp)
+                                    )
+                                }
+                            }
+                            item {
+                                Text22_700(
+                                    text = "К сожалению, наличие товара не подтверждено",
+                                    color = Color.Black,
+                                    modifier = Modifier.padding(horizontal = 20.dp)
+                                )
+                            }
+
+                            item {
+                                Text22_700(
+                                    text = "Попробуйте позже.",
+                                    color = Color.Black,
+                                    modifier = Modifier.padding(horizontal = 20.dp)
+                                )
+                            }
+                            item {
+                            Spacer(modifier = Modifier.height(95.dp))}
+                            item {
+                                Text67_800(
+                                    text = "Удачных покупок!",
+                                    color = orange,
+                                    modifier = Modifier.padding(horizontal = 0.dp)
+                                )
                             }
                         }
+                    }
 
-                        item {
-                            Text34_700(
-                                text = "Растения для Вас",
-                                color = Color.Black,
-                                modifier = Modifier.padding(start = 20.dp)
-                            )
-                        }
+                    Spacer(modifier = Modifier.height(16.dp))
+                    CommonButton(
+                        text = "Уведомить о наличии",
+                        backgroundColor = orange,
+                        foregroundColor = Color.White
+                    ) {
 
-                        item {
-                            Text22_700(
-                                text = "К сожалению, наличие товара не подтверждено",
-                                color = Color.Black,
-                                modifier = Modifier.padding(start = 30.dp)
-                            )
-                        }
-                        item {
-                            Text22_700(
-                                text = "Попробуйте позже.",
-                                color = Color.Black,
-                                modifier = Modifier.padding(start = 30.dp)
-                            )
-                        }
-                        item {
-                            Text67_800(
-                                text = "Удачных покупок!",
-                                color = orange,
-                                modifier = Modifier.padding(start = 70.dp)
-                            )
-                        }
+                    }
                 }
+
             }
         }
     }
 
-}}
+}
