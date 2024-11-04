@@ -1,6 +1,7 @@
 package com.yt.greenarchitectapp.screens.activities
 
 import android.Manifest
+import android.annotation.SuppressLint
 import android.content.Context
 import android.content.Intent
 import android.content.SharedPreferences
@@ -47,6 +48,7 @@ import org.osmdroid.config.Configuration
 import org.osmdroid.util.GeoPoint
 import org.osmdroid.views.MapView
 import com.yt.greenarchitectapp.model.Nursery
+import com.yt.greenarchitectapp.model.listOfVegetables
 import org.osmdroid.views.overlay.Marker
 
 
@@ -69,6 +71,7 @@ class DetailActivity : BaseActivity() {
                     .fillMaxSize()
             ) {
                 val data2: Vegetables= intent.extras?.getParcelable("data2")!!
+
                 item {
 
                     Row(
@@ -251,6 +254,7 @@ fun getNurseriesByCity(city: String?): List<Nursery> {
     }
 }
 
+@SuppressLint("SuspiciousIndentation")
 @Composable
 fun MapViewComposable() {
     val nurseries = mapOf(
@@ -386,9 +390,6 @@ fun MapViewComposable() {
                 overlays.add(userLocationMarker)
                 this.controller.setCenter(markerPosition)
                 val nurseriesList = getNurseriesByCity(savedCity)
-
-
-
                     nurseries[savedCity]?.forEachIndexed { index, geoPoint ->
                     val marker = Marker(this)
                     marker.position = geoPoint
@@ -401,9 +402,7 @@ fun MapViewComposable() {
                     marker.icon = context.resources.getDrawable(iconRes, context.theme)
 
                     marker.setOnMarkerClickListener { _, _ ->
-                        // Проверяем, является ли маркер серым
                         if (iconRes == R.drawable.graymarker) {
-                            // Передай данные в страницу
                             val intent = Intent(context, GreyActivity::class.java).apply{
                                 putExtra("nursery_name", marker.title)
                             }
