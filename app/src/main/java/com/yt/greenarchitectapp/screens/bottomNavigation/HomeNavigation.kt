@@ -8,6 +8,7 @@ import androidx.navigation.compose.composable
 import com.yt.greenarchitectapp.screens.bottomNavigation.screens.HistoryTab
 import com.yt.greenarchitectapp.screens.bottomNavigation.screens.HomeTab
 import com.yt.greenarchitectapp.screens.bottomNavigation.screens.ProfileTab
+import com.yt.greenarchitectapp.screens.bottomNavigation.screens.CatalogTab
 import com.yt.greenarchitectapp.screens.bottomNavigation.screens.WishListTab
 
 
@@ -21,13 +22,16 @@ fun HomeNavigation(
         composable(BottomBarScreen.Home.route){
             HomeTab(scaffoldState)
         }
+        composable(BottomBarScreen.Profile.route){
+            ProfileTab(navHostController)
+        }
+
+        composable(BottomBarScreen.Cat.route){
+            CatalogTab(navHostController)
+        }
 
         composable(BottomBarScreen.Fav.route){
             WishListTab()
-        }
-
-        composable(BottomBarScreen.Profile.route){
-            ProfileTab(navHostController)
         }
 
         composable(BottomBarScreen.History.route){

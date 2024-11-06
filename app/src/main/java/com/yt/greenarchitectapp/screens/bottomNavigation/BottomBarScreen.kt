@@ -18,18 +18,25 @@ sealed class BottomBarScreen(
         icon_focused = R.drawable.home_tab
     )
 
-    object Fav: BottomBarScreen(
-        route = "Fav",
-        title = "Favourite",
-        icon = R.drawable.fav_tab,
-        icon_focused = R.drawable.fav_tab
-    )
-
     object Profile: BottomBarScreen(
         route = "profile",
         title = "Profile",
         icon = R.drawable.profile_tab,
         icon_focused = R.drawable.profile_tab
+    )
+
+    object Cat: BottomBarScreen(
+        route = "Cat",
+        title = "Catalog",
+        icon = R.drawable.catalog,
+        icon_focused = R.drawable.catalog
+    )
+
+    object Fav: BottomBarScreen(
+        route = "Fav",
+        title = "Favourite",
+        icon = R.drawable.fav_tab,
+        icon_focused = R.drawable.fav_tab
     )
 
     object History: BottomBarScreen(

@@ -437,44 +437,6 @@ fun FoodEachRow(
 }
 
 
-@Composable
-fun PopularEachRow(
-    popular: Popular,
-    onClick: () -> Unit = {}
-) {
-
-    Card(
-        elevation = 0.dp,
-        shape = RoundedCornerShape(30.dp),
-        modifier = Modifier.padding(10.dp)
-    ) {
-        Box(modifier = Modifier
-            .background(Color(0xFFA4C897))
-            .NoRippleEffect {
-                onClick()
-            }
-        ) {
-            Column(
-                horizontalAlignment = CenterHorizontally,
-                modifier = Modifier.padding(vertical = 20.dp, horizontal = 20.dp)
-            ) {
-                Image(
-                    painter = painterResource(id = popular.image),
-                    contentDescription = "",
-                    Modifier.size(170.dp)
-                )
-                Spacer(modifier = Modifier.height(10.dp))
-                Text22_600(
-                    text = popular.name,
-                    color = Color.Black,
-                    modifier = Modifier.align(CenterHorizontally)
-                )
-                Spacer(modifier = Modifier.height(5.dp))
-            }
-        }
-    }
-
-}
 
 
 @Composable

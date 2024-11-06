@@ -97,6 +97,16 @@ fun ProfileTab(
                             color = Color.Black,
                             modifier = Modifier.padding(vertical = 10.dp)
                         )
+                        TextLocation(
+                            text = "Агроконсультант",
+                            color = Color.Black,
+                            modifier = Modifier.padding(vertical = 10.dp)
+                        )
+                        TextLocation(
+                            text = "Мои заметки",
+                            color = Color.Black,
+                            modifier = Modifier.padding(vertical = 10.dp)
+                        )
                     }
 
                 }

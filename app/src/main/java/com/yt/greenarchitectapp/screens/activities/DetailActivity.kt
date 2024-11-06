@@ -48,7 +48,6 @@ import org.osmdroid.config.Configuration
 import org.osmdroid.util.GeoPoint
 import org.osmdroid.views.MapView
 import com.yt.greenarchitectapp.model.Nursery
-import com.yt.greenarchitectapp.model.listOfVegetables
 import org.osmdroid.views.overlay.Marker
 
 
@@ -114,7 +113,7 @@ class DetailActivity : BaseActivity() {
                             text = data2.name,
                             color = Color.Black,
 
-                        )
+                            )
                     }
                 }
 
@@ -177,79 +176,79 @@ class DetailActivity : BaseActivity() {
 fun getNurseriesByCity(city: String?): List<Nursery> {
     return when (city) {
         "Москва" -> listOf(
-            Nursery(name = "«Viktoria Village", url = "https://viktoriavillage.ru/"),
-            Nursery(name = "АгроСАД", url = "https://www.agrogarden.ru/"),
+            Nursery(name = "Питомник Viktoria Village", url = "https://viktoriavillage.ru/"),
+            Nursery(name = "Питомник АгроСАД", url = "https://www.agrogarden.ru/"),
             Nursery(name = "Питомник Вашутино", url = "http://fittonia.ru/")
         )
         "Санкт-Петербург" -> listOf(
-            Nursery(name = "Диво-Сад", url = "https://divosad-spb.ru/"),
+            Nursery(name = "Питомник Диво-Сад", url = "https://divosad-spb.ru/"),
             Nursery(name = "Питомник КЕДР", url = "http://kedrpitomnik.ru/"),
-            Nursery(name = "Зелёная Фазенда", url = "http://www.kedr812.ru/")
+            Nursery(name = "Питомник Зелёная Фазенда", url = "http://www.kedr812.ru/")
         )
         "Новосибирск" -> listOf(
-            Nursery(name = "Сибирская усадьба", url = "https://sibir-usadba.ru/"),
-            Nursery(name = "Калина Красная", url = "http://kalinakrasnay.ru/"),
+            Nursery(name = "Питомник Сибирская усадьба", url = "https://sibir-usadba.ru/"),
+            Nursery(name = "Питомник Калина Красная", url = "http://kalinakrasnay.ru/"),
             Nursery(name = "Питомник Флоренс", url = "http://pitomnikflorens.ru/")
         )
         "Омск" -> listOf(
-            Nursery(name = "Живой сад", url = "http://xn--80adhfkh8aza.xn--p1ai/"),
-            Nursery(name = "Сибирский питомник", url = "http://sibpitomnik.ru/"),
-            Nursery(name = "Сад на Оми", url = "https://www.sadnaomi.ru/")
+            Nursery(name = "Питомник Живой сад", url = "http://xn--80adhfkh8aza.xn--p1ai/"),
+            Nursery(name = "Питомник Сибирский питомник", url = "http://sibpitomnik.ru/"),
+            Nursery(name = "Питомник Сад на Оми", url = "https://www.sadnaomi.ru/")
         )
         "Казань" -> listOf(
             Nursery(name = "Питомник Клевер", url = "http://sadkzn.ru/"),
             Nursery(name = "Питомник Тюлячи", url = "http://kizilniki.ru/"),
-            Nursery(name = "Биосфера", url = "http://biosfera-kazan.ru/")
+            Nursery(name = "Питомник Биосфера", url = "http://biosfera-kazan.ru/")
         )
         "Уфа" -> listOf(
-            Nursery(name = "Горзеленхоз г.Уфы", url = "http://www.ufagreen.ru/"),
-            Nursery(name = "Новый сад", url = "http://isaplings.ru/"),
-            Nursery(name = "Питомник Гилёвых", url = "https://xn--b1aboabkjdjij1byc1e5d.xn--p1ai/")
+            Nursery(name = "Питомник Горзеленхоз г.Уфы", url = "http://www.ufagreen.ru/"),
+            Nursery(name = "Питомник Новый сад", url = "http://isaplings.ru/"),
+            Nursery(name = "Питомник Питомник Гилёвых", url = "https://xn--b1aboabkjdjij1byc1e5d.xn--p1ai/")
         )
         "Нижний Новгород" -> listOf(
-            Nursery(name = "GardenFlora", url = "https://gardenflora-nn.ru/"),
-            Nursery(name = "АгроФитЭк", url = "https://agrofitec.ru/"),
+            Nursery(name = "Питомник GardenFlora", url = "https://gardenflora-nn.ru/"),
+            Nursery(name = "Питомник АгроФитЭк", url = "https://agrofitec.ru/"),
             Nursery(name = "Питомник школьный сад", url = "http://pitomniknn.ru/")
         )
         "Норильск" -> listOf(
-            Nursery(name = "АгроСемФонд", url = "https://agrosemfond.ru"),
-            Nursery(name = "Гавриш", url = "https://gavrishseeds.ru"),
-            Nursery(name = "Семена.ру", url = "https://semena.ru")
+            Nursery(name = "Питомник АгроСемФонд", url = "https://agrosemfond.ru"),
+            Nursery(name = "Питомник Гавриш", url = "https://gavrishseeds.ru"),
+            Nursery(name = "Питомник Семена", url = "https://semena.ru")
         )
         "Пермь" -> listOf(
-            Nursery(name = "Пермский сад", url = "https://prmsad.ru/"),
-            Nursery(name = "Зелёный горизонт", url = "http://zeleniy-gorizont.ru/"),
-            Nursery(name = "Ильинский питомник", url = "http://www.xn--59-6kcas9i.xn--p1ai/")
+            Nursery(name = "Питомник Пермский сад", url = "https://prmsad.ru/"),
+            Nursery(name = "Питомник Зелёный горизонт", url = "http://zeleniy-gorizont.ru/"),
+            Nursery(name = "Питомник Ильинский питомник", url = "http://www.xn--59-6kcas9i.xn--p1ai/")
         )
         "Краснодар" -> listOf(
             Nursery(name = "Питомник Победитель", url = "https://www.pitomnic-pobeditel.ru/"),
-            Nursery(name = "Садовый центр", url = "http://sadovii.ru/"),
-            Nursery(name = "Клуб садоводов профессионалов", url = "https://klubsadprof.ru/")
+            Nursery(name = "Питомник Садовый центр", url = "http://sadovii.ru/"),
+            Nursery(name = "Питомник Клуб садоводов профессионалов", url = "https://klubsadprof.ru/")
         )
         "Владивосток" -> listOf(
-            Nursery(name = "Флорегина", url = "https://floregina.ru/"),
-            Nursery(name = "Приморские саженцы", url = "http://xn--b1apmabv3b.xn--p1ai/"),
-            Nursery(name = "Семейный сад", url = "http://xn----7sbpnamkcjiji0af.xn--p1ai/")
+            Nursery(name = "Питомник Флорегина", url = "https://floregina.ru/"),
+            Nursery(name = "Питомник Приморские саженцы", url = "http://xn--b1apmabv3b.xn--p1ai/"),
+            Nursery(name = "Питомник Семейный сад", url = "http://xn----7sbpnamkcjiji0af.xn--p1ai/")
         )
         "Ростов-на-Дону" -> listOf(
             Nursery(name = "Питомник Зелёный берег", url = "https://pitomnic.su/"),
-            Nursery(name = "Сады Дона", url = "http://xn--80aala9bfr6f.xn--p1ai/"),
-            Nursery(name = "Юнифлёр", url = "https://unifleur.ru/")
+            Nursery(name = "Питомник Сады Дона", url = "http://xn--80aala9bfr6f.xn--p1ai/"),
+            Nursery(name = "Питомник Юнифлёр", url = "https://unifleur.ru/")
         )
         "Челябинск" -> listOf(
             Nursery(name = "Питомник Росток", url = "https://rostok-pitomnik.ru/"),
-            Nursery(name = "Садовый центр Исаковский", url = "https://xn--80aeqcfdb4aye.xn--p1ai/"),
-            Nursery(name = "Тепличное хозяйство Конёк-Горбунок", url = "http://xn--b1afaidikrjbdc8adl7b4a4m.xn--p1ai/")
+            Nursery(name = "Питомник Садовый центр Исаковский", url = "https://xn--80aeqcfdb4aye.xn--p1ai/"),
+            Nursery(name = "Питомник Тепличное хозяйство Конёк-Горбунок", url = "http://xn--b1afaidikrjbdc8adl7b4a4m.xn--p1ai/")
         )
         "Екатеринбург" -> listOf(
-            Nursery(name = "Садовник", url = "http://sad-24.ru/"),
-            Nursery(name = "Сады России", url = "https://sady-rossii-ural.ru/"),
-            Nursery(name = "Плантариум", url = "http://vserost.com/")
+            Nursery(name = "Питомник Садовник", url = "http://sad-24.ru/"),
+            Nursery(name = "Питомник Сады России", url = "https://sady-rossii-ural.ru/"),
+            Nursery(name = "Питомник Плантариум", url = "http://vserost.com/")
         )
         else -> listOf(
-            Nursery(name = "Садовник", url = "http://sad-24.ru/"),
-            Nursery(name = "Садовник", url = "http://sad-24.ru/"),
-            Nursery(name = "Плантариум", url = "http://vserost.com/")
+            Nursery(name = "Питомник Садовник", url = "http://sad-24.ru/"),
+            Nursery(name = "Питомник Садовник", url = "http://sad-24.ru/"),
+            Nursery(name = "Питомник Плантариум", url = "http://vserost.com/")
         )
     }
 }
@@ -390,7 +389,7 @@ fun MapViewComposable() {
                 overlays.add(userLocationMarker)
                 this.controller.setCenter(markerPosition)
                 val nurseriesList = getNurseriesByCity(savedCity)
-                    nurseries[savedCity]?.forEachIndexed { index, geoPoint ->
+                nurseries[savedCity]?.forEachIndexed { index, geoPoint ->
                     val marker = Marker(this)
                     marker.position = geoPoint
                     marker.title = nurseriesList[index].name
@@ -407,8 +406,12 @@ fun MapViewComposable() {
                                 putExtra("nursery_name", marker.title)
                             }
                             context.startActivity(intent)
-                        } else {
-                            Log.d("123", "Красный маркер нажат, ничего не происходит")
+                        }
+                        if (iconRes == R.drawable.redmarker) {
+                            val intent = Intent(context, RedActivity::class.java).apply{
+                                putExtra("nursery_name", marker.title)
+                            }
+                            context.startActivity(intent)
                         }
                         true
                     }

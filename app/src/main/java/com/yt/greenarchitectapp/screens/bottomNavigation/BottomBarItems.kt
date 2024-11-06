@@ -25,8 +25,9 @@ import com.yt.greenarchitectapp.ui.theme.orange
 fun BottomBar(navController: NavHostController) {
     val screens = listOf(
         BottomBarScreen.Home,
-        BottomBarScreen.Fav,
         BottomBarScreen.Profile,
+        BottomBarScreen.Cat,
+        BottomBarScreen.Fav,
         BottomBarScreen.History
     )
 
@@ -64,7 +65,7 @@ fun RowScope.AddItem(
 
     Box(
         modifier = Modifier
-            .height(40.dp)
+            .height(45.dp)
             .clip(CircleShape)
             .NoRippleEffect {
                 navController.navigate(screen.route) {
