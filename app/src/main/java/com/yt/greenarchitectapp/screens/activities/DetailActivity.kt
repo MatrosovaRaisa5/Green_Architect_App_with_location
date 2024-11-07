@@ -100,14 +100,14 @@ class DetailActivity : BaseActivity() {
                         HorizontalPager(count = data2.listOFImages.size, state = pager) { index ->
                             ImagePagerUi(data2.listOFImages[index])
                         }
-                        Spacer(modifier = Modifier.height(15.dp))
+                        Spacer(modifier = Modifier.height(20.dp))
 
                         HorizontalPagerIndicator(pagerState = pager,
                             activeColor = orange,
                             inactiveColor = orange.copy(alpha = 0.5f)
                         )
 
-                        Spacer(modifier = Modifier.height(0.dp))
+                        Spacer(modifier = Modifier.height(5.dp))
 
                         Text28_600(
                             text = data2.name,

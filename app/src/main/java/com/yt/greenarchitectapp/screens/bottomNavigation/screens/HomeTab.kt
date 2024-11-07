@@ -4,6 +4,7 @@ import android.content.Context
 import android.content.Intent
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
+import androidx.compose.foundation.border
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.horizontalScroll
 import androidx.compose.foundation.layout.*
@@ -177,12 +178,12 @@ fun GardenTasksRow() {
         item {
             TaskCard("Сканер растений")
         }
-        item {
-            TaskCard("Функция 5")
-        }
-        item {
-            TaskCard("Функция 6")
-        }
+            //item {
+            //TaskCard("Функция 5")
+        //}
+        //item {
+          //  TaskCard("Функция 6")
+        //}
     }
 }
 
@@ -196,7 +197,7 @@ fun TaskCard(
         modifier = Modifier
             .padding(10.dp)
             .size(120.dp)
-
+            .border(3.dp, Color(0xFFA4C897), RoundedCornerShape(80.dp))
     ) {
         Box(
             modifier = Modifier
@@ -206,7 +207,7 @@ fun TaskCard(
         ) {
             Text(
                 text = title,
-                color = Color(0xFFF99BC4),
+                color = Color.Black,
                 fontSize = 14.sp,
                 textAlign = TextAlign.Center,
                 modifier = Modifier.align(Center)
