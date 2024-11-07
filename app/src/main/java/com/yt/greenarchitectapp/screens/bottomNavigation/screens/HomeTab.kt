@@ -152,7 +152,7 @@ fun HomeTab(
                 color = Color.Gray,
                 modifier = Modifier.padding(start = 30.dp)
             )
-            Spacer(modifier = Modifier.height(80.dp))
+            Spacer(modifier = Modifier.height(120.dp))
         }
 
         }

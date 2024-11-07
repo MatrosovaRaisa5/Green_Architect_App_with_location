@@ -291,11 +291,18 @@ fun CommonTextField(
         },
         modifier = modifier.fillMaxWidth(),
         colors = TextFieldDefaults.textFieldColors(
-            textColor = LocalContentColor.current,
             backgroundColor = Color.White,
+            cursorColor = Color.Black,
+            textColor = Color.Black,
+            placeholderColor = placeholder,
             unfocusedIndicatorColor = gray,
             focusedIndicatorColor = Color(0xFF47A636),
+            disabledIndicatorColor = Color.Transparent,
+            disabledPlaceholderColor = placeholder,
+            disabledLabelColor = placeholder,
+            disabledLeadingIconColor = gray
         ),
+        textStyle = LocalTextStyle.current.copy(color = Color.Black), //цвет текста
         maxLines = 1,
         keyboardOptions = KeyboardOptions(keyboardType = keyboardType)
     )
@@ -343,9 +350,9 @@ fun CommonSearchBar(
             .fillMaxWidth(),
         colors = TextFieldDefaults.textFieldColors(
             backgroundColor = Color.White,
-            cursorColor = Color.Black, // Цвет курсора
-            textColor = Color.Black, // Цвет текста
-            placeholderColor = placeholder, // Цвет плейсхолдера
+            cursorColor = Color.Black,
+            textColor = Color.Black,
+            placeholderColor = placeholder,
             unfocusedIndicatorColor = Color.Transparent,
             focusedIndicatorColor = Color.Transparent,
             disabledIndicatorColor = Color.Transparent,
@@ -363,9 +370,8 @@ fun CommonSearchBar(
                 tint = Color.Unspecified
             )
         },
-        // Добавьте параметры для улучшения видимости текста
-        textStyle = LocalTextStyle.current.copy(color = Color.Black), // Установите цвет текста
-        placeholder = { Text17_600(text = "Поиск", color = placeholder) } // Плейсхолдер с цветом
+        textStyle = LocalTextStyle.current.copy(color = Color.Black),
+        placeholder = { Text17_600(text = "Поиск", color = placeholder) }
     )
 }
 
