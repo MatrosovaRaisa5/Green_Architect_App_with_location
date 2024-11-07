@@ -46,6 +46,11 @@ fun CatalogTab(
     val search = remember { mutableStateOf("") }
     val lists by remember { mutableStateOf(listOf("Овощи", "Цветы", "Плодово-ягодные", "Рассада")) }
     var currentListValue by remember { mutableStateOf("Овощи") }
+    val filteredVegetables = remember(search.value, currentListValue) {
+        listOfVegetables.filter { vegetable ->
+            vegetable.name.contains(search.value, ignoreCase = true)
+        }
+    }
 
     Box(modifier = Modifier.fillMaxSize()) {
         Image(
@@ -119,12 +124,12 @@ fun CatalogTab(
             }
 
             if (currentListValue == "Овощи") {
-                if (listOfVegetables.isEmpty()) {
+                if (filteredVegetables.isEmpty()) {
                     item {
-                        Text(text = "Пока что ничего тут нет...", color = Color.Red, modifier = Modifier.padding(start = 10.dp))
+                        Text(text = "Пока что тут ничего нет...", color = orange, modifier = Modifier.padding(start = 10.dp))
                     }
                 } else {
-                    items(listOfVegetables) { vegetable ->
+                    items(filteredVegetables) { vegetable ->
                         EachRowCat(vegetables = vegetable) { selectedVegetable ->
                             val intent = Intent(context, DetailActivity::class.java).apply {
                                 putExtra("data2", selectedVegetable)
