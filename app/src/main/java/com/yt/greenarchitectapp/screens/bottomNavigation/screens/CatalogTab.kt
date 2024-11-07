@@ -83,7 +83,7 @@ fun CatalogTab(
                         }
                     }
                 }
-                Spacer(modifier = Modifier.height(5.dp))
+                Spacer(modifier = Modifier.height(2.dp))
             }
 
             item {
