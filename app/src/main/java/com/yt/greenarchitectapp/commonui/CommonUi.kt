@@ -333,7 +333,6 @@ fun CommonSearchBar(
     modifier: Modifier = Modifier,
     isEnabled: Boolean = true
 ) {
-
     TextField(
         value = text.value,
         onValueChange = {
@@ -344,7 +343,9 @@ fun CommonSearchBar(
             .fillMaxWidth(),
         colors = TextFieldDefaults.textFieldColors(
             backgroundColor = Color.White,
-            cursorColor = Color.Transparent,
+            cursorColor = Color.Black, // Цвет курсора
+            textColor = Color.Black, // Цвет текста
+            placeholderColor = placeholder, // Цвет плейсхолдера
             unfocusedIndicatorColor = Color.Transparent,
             focusedIndicatorColor = Color.Transparent,
             disabledIndicatorColor = Color.Transparent,
@@ -353,7 +354,6 @@ fun CommonSearchBar(
             disabledLeadingIconColor = gray
         ),
         enabled = isEnabled,
-//        placeholder = { Text17_600(text = "Search", color = placeholder) },
         label = { Text17_600(text = if (isEnabled) "" else "Поиск", color = placeholder) },
         leadingIcon = {
             Icon(
@@ -362,10 +362,11 @@ fun CommonSearchBar(
                 modifier = Modifier.size(18.dp),
                 tint = Color.Unspecified
             )
-        }
-
+        },
+        // Добавьте параметры для улучшения видимости текста
+        textStyle = LocalTextStyle.current.copy(color = Color.Black), // Установите цвет текста
+        placeholder = { Text17_600(text = "Поиск", color = placeholder) } // Плейсхолдер с цветом
     )
-
 }
 
 @Composable

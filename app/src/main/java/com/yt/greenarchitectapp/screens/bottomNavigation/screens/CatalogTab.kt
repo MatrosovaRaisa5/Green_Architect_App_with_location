@@ -126,7 +126,7 @@ fun CatalogTab(
             if (currentListValue == "Овощи") {
                 if (filteredVegetables.isEmpty()) {
                     item {
-                        Text(text = "Пока что тут ничего нет...", color = orange, modifier = Modifier.padding(start = 10.dp))
+                        Text(text = "Ничего не нашли...", color = orange, modifier = Modifier.padding(start = 10.dp))
                     }
                 } else {
                     items(filteredVegetables) { vegetable ->
