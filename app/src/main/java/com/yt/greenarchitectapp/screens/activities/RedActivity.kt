@@ -96,7 +96,7 @@ class RedActivity : ComponentActivity() {
                             }
                             item {
                                 Text22_700(
-                                    text = "4 дней",
+                                    text = "7 дней",
                                     color = orange,
                                     modifier = Modifier.padding(horizontal = 30.dp))
                             }
