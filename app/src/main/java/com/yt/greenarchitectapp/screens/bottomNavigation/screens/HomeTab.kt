@@ -14,6 +14,8 @@ import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.verticalScroll
+import androidx.compose.material.Button
+import androidx.compose.material.ButtonDefaults
 import androidx.compose.material.Card
 import androidx.compose.material.Text
 import androidx.compose.material.ScaffoldState
@@ -65,87 +67,99 @@ fun HomeTab(
     }
 
     LazyColumn(
-            modifier = Modifier
-                .fillMaxSize()
-                .padding(10.dp),
-            verticalArrangement = Arrangement.spacedBy(10.dp)
-        ) {
-            //item {
-               // Row(
-                    //modifier = Modifier
-                       // .fillMaxWidth()
-                       // .padding(start = 10.dp, top = 10.dp, bottom = 10.dp),
-                    //horizontalArrangement = Arrangement.SpaceBetween
-                //) {
-                    //Row {
-                        //CommonIconButton(icon = R.drawable.nav_bar) {
-                            //scope.launch {
-                               // scaffoldState.drawerState.open()
-                           // }
-                        //}
-                       // Spacer(modifier = Modifier.width(10.dp))
-                    //}
-               // }
-           // }
+        modifier = Modifier
+            .fillMaxSize()
+            .padding(10.dp),
+        verticalArrangement = Arrangement.spacedBy(10.dp)
+    ) {
+        //item {
+        // Row(
+        //modifier = Modifier
+        // .fillMaxWidth()
+        // .padding(start = 10.dp, top = 10.dp, bottom = 10.dp),
+        //horizontalArrangement = Arrangement.SpaceBetween
+        //) {
+        //Row {
+        //CommonIconButton(icon = R.drawable.nav_bar) {
+        //scope.launch {
+        // scaffoldState.drawerState.open()
+        // }
+        //}
+        // Spacer(modifier = Modifier.width(10.dp))
+        //}
+        // }
+        // }
 
 
 
-
-            item {
-                Text34_700(
-                    text = "Добро пожаловать!",
-                    color = Color.Black,
-                    modifier = Modifier.padding(top=20.dp,start = 28.dp)
-                )
-                Spacer(modifier = Modifier.height(10.dp))
-            }
 
         item {
-            Text22_700(
-                text = "Мои огородные дела",
-                color = Color(0xFF437039),
-                modifier = Modifier.padding(start = 30.dp)
+            Text34_700(
+                text = "Добро пожаловать!",
+                color = Color.Black,
+                modifier = Modifier.padding(top=20.dp,start = 28.dp)
             )
+            Spacer(modifier = Modifier.height(10.dp))
+        }
+
+        item {
+            Row(
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .padding(start = 30.dp, end = 30.dp),
+                verticalAlignment = Alignment.CenterVertically,
+                horizontalArrangement = Arrangement.SpaceBetween
+            ) {
+                Text22_700(
+                    text = "Мои огородные дела",
+                    color = Color(0xFF437039),
+                    modifier = Modifier.weight(1f)
+                )
+
+                CommonIconButton(icon = R.drawable.notice) {
+                    context.launchActivity<CartActivity> { }
+                }
+            }
             Spacer(modifier = Modifier.height(10.dp))
         }
 
         item {
             GardenTasksRow()
         }
-            item {
-                Text22_700(
-                    text = "Спецпредложения",
-                    color = orange,
-                    modifier = Modifier.padding(start = 30.dp)
-                )
-                Spacer(modifier = Modifier.height(10.dp))
+        item {
+            Text22_700(
+                text = "Спецпредложения",
+                color = orange,
+                modifier = Modifier.padding(start = 30.dp)
+            )
+            Spacer(modifier = Modifier.height(10.dp))
+        }
+
+
+        // Первые две карточки
+        item {
+            Row(
+                modifier = Modifier.fillMaxWidth(),
+                horizontalArrangement = Arrangement.SpaceBetween
+            ) {
+                PopularEachRow(popular = listOfPopular[0])
+                PopularEachRow(popular = listOfPopular[1])
             }
+        }
 
-
-            // Первые две карточки
-            item {
-                Row(
-                    modifier = Modifier.fillMaxWidth(),
-                    horizontalArrangement = Arrangement.SpaceBetween
-                ) {
-                    PopularEachRow(popular = listOfPopular[0])
-                    PopularEachRow(popular = listOfPopular[1])
-                }
+        // Вторые две карточки
+        item {
+            Row(
+                modifier = Modifier.fillMaxWidth(),
+                horizontalArrangement = Arrangement.SpaceBetween
+            ) {
+                PopularEachRow(popular = listOfPopular[2])
+                PopularEachRow(popular = listOfPopular[3])
             }
+            Spacer(modifier = Modifier.height(20.dp))
+        }
 
-            // Вторые две карточки
-            item {
-                Row(
-                    modifier = Modifier.fillMaxWidth(),
-                    horizontalArrangement = Arrangement.SpaceBetween
-                ) {
-                    PopularEachRow(popular = listOfPopular[2])
-                    PopularEachRow(popular = listOfPopular[3])
-                }
-                Spacer(modifier = Modifier.height(20.dp))
-            }
-
-            // если еще что-то надо будет
+        // если еще что-то надо будет
         item {
             Text22_700(
                 text = "Тут будет реклама...",
@@ -155,7 +169,7 @@ fun HomeTab(
             Spacer(modifier = Modifier.height(120.dp))
         }
 
-        }
+    }
 
 }
 
@@ -173,16 +187,17 @@ fun GardenTasksRow() {
             TaskCard("Лунный календарь")
         }
         item {
+            TaskCard("Агросовет")
+        }
+        item {
             TaskCard("Огородный менеджер")
         }
         item {
             TaskCard("Сканер растений")
         }
-            //item {
-            //TaskCard("Функция 5")
-        //}
+
         //item {
-          //  TaskCard("Функция 6")
+        //  TaskCard("Функция 6")
         //}
     }
 }
@@ -196,7 +211,7 @@ fun TaskCard(
         shape = RoundedCornerShape(80.dp),
         modifier = Modifier
             .padding(10.dp)
-            .size(120.dp)
+            .size(110.dp)
             .border(3.dp, Color(0xFFA4C897), RoundedCornerShape(80.dp))
     ) {
         Box(
@@ -208,7 +223,7 @@ fun TaskCard(
             Text(
                 text = title,
                 color = Color.Black,
-                fontSize = 14.sp,
+                fontSize = 12.sp,
                 textAlign = TextAlign.Center,
                 modifier = Modifier.align(Center)
             )

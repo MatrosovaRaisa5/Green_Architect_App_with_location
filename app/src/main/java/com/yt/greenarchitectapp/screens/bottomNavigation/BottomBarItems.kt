@@ -81,7 +81,8 @@ fun RowScope.AddItem(
                 painter = painterResource(id = screen.icon_focused),
                 contentDescription = "icon",
                 tint = contentColor,
-                modifier = Modifier.size(24.dp)
+                modifier = Modifier.size(30.dp)
+                    .padding(top=5.dp)
             )
 
         }
