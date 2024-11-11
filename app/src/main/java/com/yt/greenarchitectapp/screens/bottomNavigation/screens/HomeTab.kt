@@ -190,7 +190,7 @@ fun GardenTasksRow() {
             TaskCard("Агросовет")
         }
         item {
-            TaskCard("Огородный менеджер")
+            TaskCard("Менеджер грядок")
         }
         item {
             TaskCard("Сканер растений")
