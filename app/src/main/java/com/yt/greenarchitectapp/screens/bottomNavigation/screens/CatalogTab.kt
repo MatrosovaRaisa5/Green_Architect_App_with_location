@@ -44,7 +44,7 @@ fun CatalogTab(
     val scope = rememberCoroutineScope()
     val horizontalScrollState = rememberScrollState()
     val search = remember { mutableStateOf("") }
-    val lists by remember { mutableStateOf(listOf("Овощи", "Цветы", "Плодово-ягодные", "Рассада")) }
+    val lists by remember { mutableStateOf(listOf("Овощи", "Комнатные растения", "Цветы", "Плодово-ягодные", "Рассада")) }
     var currentListValue by remember { mutableStateOf("Овощи") }
     val filteredVegetables = remember(search.value, currentListValue) {
         listOfVegetables.filter { vegetable ->

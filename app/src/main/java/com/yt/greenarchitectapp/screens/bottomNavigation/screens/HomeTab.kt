@@ -54,7 +54,7 @@ fun HomeTab(
     val context = LocalContext.current
     val scope = rememberCoroutineScope()
     val search = remember { mutableStateOf("") }
-    val lists by remember { mutableStateOf(listOf("Овощи", "Цветы", "Плодово-ягодные", "Рассада")) }
+    val lists by remember { mutableStateOf(listOf("Овощи", "Комнатные растения", "Цветы", "Плодово-ягодные", "Рассада")) }
     var currentListValue by remember { mutableStateOf("Овощи") }
 
     Box(modifier = Modifier.fillMaxSize()) {
@@ -190,15 +190,15 @@ fun GardenTasksRow() {
             TaskCard("Агросовет")
         }
         item {
+            TaskCard("Библиотека садовода")
+        }
+        item {
             TaskCard("Менеджер грядок")
         }
         item {
             TaskCard("Сканер растений")
         }
 
-        //item {
-        //  TaskCard("Функция 6")
-        //}
     }
 }
 
