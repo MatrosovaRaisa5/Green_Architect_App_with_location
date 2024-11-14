@@ -42,6 +42,7 @@ import com.yt.greenarchitectapp.model.listOfPopular
 import com.yt.greenarchitectapp.model.listOfVegetables
 import com.yt.greenarchitectapp.screens.activities.CartActivity
 import com.yt.greenarchitectapp.screens.activities.DetailActivity
+import com.yt.greenarchitectapp.screens.bottomNavigation.screens.note.NoteActivity
 import com.yt.greenarchitectapp.ui.theme.orange
 import com.yt.greenarchitectapp.utils.launchActivity
 import kotlinx.coroutines.launch
@@ -117,7 +118,7 @@ fun HomeTab(
                 )
 
                 CommonIconButton(icon = R.drawable.notice) {
-                    context.launchActivity<CartActivity> { }
+                    context.launchActivity<NoteActivity> { }
                 }
             }
             Spacer(modifier = Modifier.height(10.dp))
