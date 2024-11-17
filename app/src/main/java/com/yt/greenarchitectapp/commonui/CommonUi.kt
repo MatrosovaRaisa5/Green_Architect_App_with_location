@@ -331,6 +331,27 @@ fun CommonIconButton(
 
 }
 
+@Composable
+fun IconButtonN(
+    icon: Int,
+    tint: Color = Color.Unspecified,
+    size: Dp = 24.dp,
+    modifier: Modifier = Modifier,
+    onClick: () -> Unit = {}
+) {
+
+    IconButton(onClick = {
+        onClick()
+    }, modifier = modifier) {
+        Icon(
+            painter = painterResource(id = icon),
+            contentDescription = "",
+            modifier = Modifier.size(size),
+            tint = tint
+        )
+    }
+
+}
 
 @Composable
 fun CommonSearchBar(

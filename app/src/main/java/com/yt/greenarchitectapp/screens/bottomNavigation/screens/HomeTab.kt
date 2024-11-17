@@ -1,25 +1,17 @@
 package com.yt.greenarchitectapp.screens.bottomNavigation.screens
 
-import android.content.Context
-import android.content.Intent
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
 import androidx.compose.foundation.clickable
-import androidx.compose.foundation.horizontalScroll
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.LazyRow
 import androidx.compose.foundation.lazy.items
-import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.shape.RoundedCornerShape
-import androidx.compose.foundation.verticalScroll
-import androidx.compose.material.Button
-import androidx.compose.material.ButtonDefaults
 import androidx.compose.material.Card
 import androidx.compose.material.Text
 import androidx.compose.material.ScaffoldState
-import androidx.compose.material.Surface
 import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Alignment.Companion.Center
@@ -31,21 +23,15 @@ import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.style.TextAlign
-import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.yt.greenarchitectapp.R
 import com.yt.greenarchitectapp.commonui.*
 import com.yt.greenarchitectapp.model.Popular
-import com.yt.greenarchitectapp.model.Vegetables
 import com.yt.greenarchitectapp.model.listOfPopular
-import com.yt.greenarchitectapp.model.listOfVegetables
-import com.yt.greenarchitectapp.screens.activities.CartActivity
-import com.yt.greenarchitectapp.screens.activities.DetailActivity
-import com.yt.greenarchitectapp.screens.bottomNavigation.screens.note.NoteActivity
+import com.yt.greenarchitectapp.screens.notes.NoteActivity
 import com.yt.greenarchitectapp.ui.theme.orange
 import com.yt.greenarchitectapp.utils.launchActivity
-import kotlinx.coroutines.launch
 
 
 @Composable
@@ -128,11 +114,21 @@ fun HomeTab(
             GardenTasksRow()
         }
         item {
-            Text22_700(
-                text = "Спецпредложения",
-                color = orange,
-                modifier = Modifier.padding(start = 30.dp)
-            )
+            Row(
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .padding(start = 10.dp, end = 15.dp),
+                verticalAlignment = Alignment.CenterVertically
+            ) {
+                IconButtonN(icon = R.drawable.spof) {
+                }
+                Spacer(modifier = Modifier.width(5.dp))
+                Text22_700(
+                    text = "Спецпредложения",
+                    color = orange,
+                    modifier = Modifier.align(CenterVertically)
+                )
+            }
             Spacer(modifier = Modifier.height(10.dp))
         }
 

@@ -46,6 +46,7 @@ import com.yt.greenarchitectapp.ui.theme.Purple700
 import com.yt.greenarchitectapp.ui.theme.orange
 import com.yt.greenarchitectapp.utils.launchActivity
 import kotlinx.coroutines.launch
+
 class GreyActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

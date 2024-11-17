@@ -37,9 +37,10 @@
             android:exported="true"
             android:screenOrientation="portrait" />
         <activity
-            android:name="com.yt.greenarchitectapp.screens.activities.NoteActivity"
+            android:name="com.yt.greenarchitectapp.screens.notes.NoteActivity"
             android:exported="true"
-            android:screenOrientation="portrait" />
+            android:screenOrientation="portrait"
+            tools:ignore="Instantiatable" />
         <activity
             android:name="com.yt.greenarchitectapp.screens.activities.HomeActivity"
             android:exported="true"
