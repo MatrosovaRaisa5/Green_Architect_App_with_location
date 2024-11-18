@@ -105,7 +105,7 @@ fun ProfileTab(
                                 Column(
                                     modifier = Modifier.padding(start = 20.dp)
                                 ) {
-                                    Text18_600(text = "Раиса Матросова", color = Color.Black)
+                                    Text18_600(text = "Великий садовод", color = Color.Black)
                                     Text13_400(text = "minteee@list.ru", color = textColor1)
 
                                 }

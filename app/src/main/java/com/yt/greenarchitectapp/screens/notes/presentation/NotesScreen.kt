@@ -1,7 +1,10 @@
 package com.yt.greenarchitectapp.presentation
 
+import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
+import androidx.compose.foundation.border
 import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
@@ -27,12 +30,20 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
+import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
 import com.yt.greenarchitectapp.R
+import com.yt.greenarchitectapp.ui.theme.green
+import com.yt.greenarchitectapp.ui.theme.lightorange
+
+import androidx.compose.ui.res.painterResource
+import com.yt.greenarchitectapp.commonui.CommonIconButton
+import com.yt.greenarchitectapp.ui.theme.orange
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
@@ -41,53 +52,70 @@ fun NotesScreen(
     navController: NavController,
     onEvent: (NotesEvent) -> Unit
 ) {
-
     Scaffold(
         topBar = {
             Row(
                 modifier = Modifier
                     .fillMaxWidth()
                     .height(55.dp)
-                    .background(MaterialTheme.colorScheme.primary)
+                    .background(green)
                     .padding(16.dp),
                 verticalAlignment = Alignment.CenterVertically
             ) {
+                CommonIconButton(icon = R.drawable.back) {
+
+                }
                 Text(
                     text = "Мои заметки",
                     modifier = Modifier.weight(1f),
                     fontSize = 17.sp,
                     fontWeight = FontWeight.SemiBold,
-                    color = MaterialTheme.colorScheme.onPrimary
+                    color = Color.White
                 )
 
                 IconButton(onClick = { onEvent(NotesEvent.SortNotes) }) {
-                    Icon(
-                        imageVector = Icons.Rounded.Build,
+                    Image(
+                        painter = painterResource(id = R.drawable.sort),
                         contentDescription = "Sort Notes",
                         modifier = Modifier.size(35.dp),
-                        tint = MaterialTheme.colorScheme.onPrimary
                     )
                 }
             }
         },
 
         floatingActionButton = {
-            FloatingActionButton(onClick = {
-                state.title.value = ""
-                state.description.value = ""
-                navController.navigate("AddNoteScreen")
-            }) {
-                Icon(imageVector = Icons.Rounded.Add, contentDescription = "Add new note")
+            FloatingActionButton(
+                onClick = {
+                    state.title.value = ""
+                    state.description.value = ""
+                    navController.navigate("AddNoteScreen")
+                },
+                containerColor = orange
+            ) {
+                Icon(
+                    imageVector = Icons.Rounded.Add,
+                    contentDescription = "Add new note",
+                    tint = Color.White
+                )
             }
         }
     ) { paddingValues ->
+
+        Box(modifier = Modifier.fillMaxSize()) {
+            Image(
+                painter = painterResource(id = R.drawable.catfon),
+                contentDescription = "Background Image",
+                contentScale = ContentScale.Crop,
+                modifier = Modifier.fillMaxSize()
+            )
+        }
 
         LazyColumn(
             contentPadding = paddingValues,
             modifier = Modifier
                 .fillMaxSize()
-                .padding(8.dp),
-            verticalArrangement = Arrangement.spacedBy(16.dp)
+                .padding(20.dp),
+            verticalArrangement = Arrangement.spacedBy(18.dp)
         ) {
 
             items(state.notes.size) { index ->
@@ -101,7 +129,6 @@ fun NotesScreen(
         }
 
     }
-
 }
 
 @Composable
@@ -113,9 +140,10 @@ fun NoteItem(
     Row(
         modifier = Modifier
             .fillMaxWidth()
-            .clip(RoundedCornerShape(10.dp))
-            .background(MaterialTheme.colorScheme.primaryContainer)
-            .padding(12.dp)
+            .clip(RoundedCornerShape(20.dp))
+            .background(Color(0xFFFFF4F9))
+            .padding(15.dp)
+
     ) {
         Column(
             modifier = Modifier.weight(1f)
@@ -125,7 +153,7 @@ fun NoteItem(
                 text = state.notes[index].title,
                 fontSize = 18.sp,
                 fontWeight = FontWeight.SemiBold,
-                color = MaterialTheme.colorScheme.onSecondaryContainer
+                color = Color.Black
             )
 
             Spacer(modifier = Modifier.height(8.dp))
@@ -133,7 +161,7 @@ fun NoteItem(
             Text(
                 text = state.notes[index].description,
                 fontSize = 16.sp,
-                color = MaterialTheme.colorScheme.onSecondaryContainer
+                color = Color.Black
             )
 
         }
@@ -148,7 +176,7 @@ fun NoteItem(
                 imageVector = Icons.Rounded.Delete,
                 contentDescription = "Delete Note",
                 modifier = Modifier.size(35.dp),
-                tint = MaterialTheme.colorScheme.onPrimaryContainer
+                tint = Color(0xFF173111)
             )
 
         }
