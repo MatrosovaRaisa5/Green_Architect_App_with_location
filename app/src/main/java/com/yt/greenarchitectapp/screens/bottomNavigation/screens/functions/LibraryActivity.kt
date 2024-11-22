@@ -60,7 +60,7 @@ class LibraryActivity : ComponentActivity() {
                     Text34_700(
                         text = "Статьи",
                         color = Color.Black,
-                        modifier = Modifier
+                        modifier = Modifier.padding(top=20.dp,start = 28.dp)
                     )
                     Spacer(modifier = Modifier.height(10.dp))
                 }

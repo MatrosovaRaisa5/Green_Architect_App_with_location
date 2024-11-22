@@ -116,7 +116,7 @@ fun ProfileTab(
                     Column(
                         modifier = Modifier
                             .fillMaxSize()
-                            .padding(horizontal = 30.dp, vertical = 10.dp),
+                            .padding(horizontal = 20.dp, vertical = 10.dp),
                         horizontalAlignment = Alignment.CenterHorizontally,
                         verticalArrangement = Arrangement.Center
                     ) {
@@ -126,14 +126,31 @@ fun ProfileTab(
                             modifier = Modifier.padding(vertical = 10.dp)
                         )
                         MapViewComposable()
-                        Spacer(modifier = Modifier.height(10.dp))
+                    }
+                        Column(
+                            modifier = Modifier
+                                .fillMaxWidth()
+                                .padding(vertical = 10.dp)
+                        ) {
+                            Text17_600(
+                                text = "Мои скидки и купоны",
+                                color = Color(0xFF29852E),
+                                modifier = Modifier.padding(vertical = 10.dp)
+                            )
+                            Text17_600(
+                                text = "Правила приложения",
+                                color = Color(0xFF29852E),
+                                modifier = Modifier.padding(vertical = 10.dp)
+                            )
+                            Text17_600(
+                                text = "Выход из аккаунта",
+                                color = orange,
+                                modifier = Modifier.padding(vertical = 10.dp)
+                            )
+                        }
+
 
                     }
-
-
-                }
-
-
 
 
             }
