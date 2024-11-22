@@ -9,6 +9,7 @@ import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.Icon
+import androidx.compose.material.IconButton
 import androidx.compose.material.Surface
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
@@ -23,9 +24,11 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
+import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.yt.greenarchitectapp.R
+import com.yt.greenarchitectapp.commonui.CommonIconButton
 import com.yt.greenarchitectapp.commonui.CommonSearchBar
 import com.yt.greenarchitectapp.commonui.Text17_600
 import com.yt.greenarchitectapp.commonui.Text34_700
@@ -60,18 +63,19 @@ class LibraryActivity : ComponentActivity() {
                 verticalArrangement = Arrangement.spacedBy(10.dp)
             ) {
                 item {
-                    Row {
+                    Row(verticalAlignment = Alignment.CenterVertically) {
+                        //CommonIconButton(icon = R.drawable.back) {
+                            //finish()
+                        //}
                         Text34_700(
                             text = "Библиосад",
                             color = Color.Black,
-                            modifier = Modifier.padding(top=20.dp,start=20.dp,end = 10.dp)
+                            modifier = Modifier.padding(top=20.dp, start=20.dp, end=10.dp)
                         )
                         Icon(
                             painter = painterResource(id = R.drawable.books),
                             contentDescription = "",
-                            modifier = Modifier
-                                .size(60.dp)
-                                .padding(top=20.dp),
+                            modifier = Modifier.size(60.dp).padding(top=20.dp),
                             tint = Color.Unspecified,
                         )
                     }
@@ -79,7 +83,7 @@ class LibraryActivity : ComponentActivity() {
                     Text17_600(
                         text = "Интересно о садоводстве с нами!",
                         color = orange,
-                        modifier = Modifier.padding(top = 20.dp, start = 28.dp)
+                        modifier = Modifier.padding(top=20.dp, start=28.dp)
                     )
                     Spacer(modifier = Modifier.height(15.dp))
                 }
@@ -106,8 +110,7 @@ class LibraryActivity : ComponentActivity() {
                 }
             }
         }
-    }
-}
+    }}
 
     @Composable
     fun ArticleCard(title: String, imageRes: Int) {

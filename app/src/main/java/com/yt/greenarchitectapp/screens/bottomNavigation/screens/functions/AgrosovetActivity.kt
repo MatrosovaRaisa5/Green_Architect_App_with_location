@@ -8,6 +8,7 @@ import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.Icon
+import androidx.compose.material.IconButton
 import androidx.compose.material.Surface
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
@@ -18,10 +19,12 @@ import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.yt.greenarchitectapp.R
 import com.yt.greenarchitectapp.commonui.CommonButton
+import com.yt.greenarchitectapp.commonui.CommonIconButton
 import com.yt.greenarchitectapp.commonui.Text17_600
 import com.yt.greenarchitectapp.commonui.Text22_700
 import com.yt.greenarchitectapp.commonui.Text34_700
@@ -53,6 +56,8 @@ class AgrosovetActivity : ComponentActivity() {
 
                     item {
                         Row {
+                            //CommonIconButton(icon = R.drawable.back) {
+                               // finish()                            }
                             Text34_700(
                                 text = "Агросовет",
                                 color = Color.Black,
@@ -134,4 +139,25 @@ fun AgronomistCard(imageResId: Int, name: String, description: String, articles:
             )
         }
     }
+}
+@Composable
+fun CommonIconButton(
+    icon: Int,
+    tint: Color = Color.Black,
+    size: Dp = 24.dp,
+    modifier: Modifier,
+    onClick: () -> Unit = {}
+) {
+
+    IconButton(onClick = {
+        onClick()
+    }, modifier = modifier) {
+        Icon(
+            painter = painterResource(id = icon),
+            contentDescription = "",
+            modifier = Modifier.size(size),
+            tint = tint
+        )
+    }
+
 }
