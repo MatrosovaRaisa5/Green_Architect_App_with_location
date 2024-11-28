@@ -33,12 +33,10 @@ import androidx.compose.ui.unit.IntOffset
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.window.Popup
 import com.google.gson.Gson
-import com.google.gson.reflect.TypeToken
 import com.yt.greenarchitectapp.BaseActivity
 import com.yt.greenarchitectapp.commonui.CommonHeader
 import com.yt.greenarchitectapp.commonui.Text17_600
 import com.yt.greenarchitectapp.model.Vegetables
-import android.util.Log
 import com.yt.greenarchitectapp.R
 import com.yt.greenarchitectapp.commonui.CommonIconButton
 
@@ -142,7 +140,7 @@ class CartActivity : BaseActivity() {
                         }
                     }
 
-                    CommonIconButton(icon = R.drawable.cart) {
+                    CommonIconButton(icon = R.drawable.delete) {
                         cartManager.removeVegetable(vegetables)
                         reservedVegetables.value = cartManager.loadReservedVegetables()
                     }
@@ -184,7 +182,7 @@ class CartManager(private val context: Context) {
 
     fun loadReservedVegetables(): List<Vegetables> {
         val json = sharedPreferences.getString("reserved_vegetables", "[]") ?: "[]"
-        val type = object : TypeToken<List<Vegetables>>() {}.type
+        val type = object : com.google.gson.reflect.TypeToken<List<Vegetables>>() {}.type
         return gson.fromJson(json, type) ?: emptyList()
     }
 
