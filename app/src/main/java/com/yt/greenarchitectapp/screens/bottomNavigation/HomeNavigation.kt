@@ -31,11 +31,11 @@ fun HomeNavigation(
         }
 
         composable(BottomBarScreen.Fav.route){
-            WishListTab()
+            WishListTab(navHostController)
         }
 
         composable(BottomBarScreen.History.route){
-            HistoryTab()
+            HistoryTab(navHostController)
         }
     }
 

@@ -7,7 +7,6 @@ import android.content.Intent
 import android.content.SharedPreferences
 import android.content.pm.PackageManager
 import android.net.Uri
-import android.util.Log
 import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.border
@@ -48,6 +47,8 @@ import org.osmdroid.config.Configuration
 import org.osmdroid.util.GeoPoint
 import org.osmdroid.views.MapView
 import com.yt.greenarchitectapp.model.Nursery
+import com.yt.greenarchitectapp.screens.bottomNavigation.screens.FavoriteManager
+import com.yt.greenarchitectapp.screens.bottomNavigation.screens.HistoryManager
 import org.osmdroid.views.overlay.Marker
 
 
@@ -65,11 +66,15 @@ class DetailActivity : BaseActivity() {
             }
             val context = LocalContext.current
             val savedCity = getCityFromPreferences(context)
+            val data2: Vegetables= intent.extras?.getParcelable("data2")!!
+            val cartManager = remember { CartManager(context) }
+
             LazyColumn(
                 modifier = Modifier
                     .fillMaxSize()
             ) {
-                val data2: Vegetables= intent.extras?.getParcelable("data2")!!
+                val historyManager = HistoryManager(context)
+                historyManager.saveVegetableToHistory(data2)
 
                 item {
 
@@ -82,7 +87,19 @@ class DetailActivity : BaseActivity() {
                         CommonIconButton(icon = R.drawable.back) {
                             finish()
                         }
-                        CommonIconButton(icon = R.drawable.heart)
+
+                        var isFavorite by remember { mutableStateOf(FavoriteManager.isFavorite(context, data2)) }
+
+                        CommonIconButton(
+                            icon = if (isFavorite) R.drawable.heart_filled else R.drawable.heart
+                        ) {
+                            if (isFavorite) {
+                                FavoriteManager.removeFromFavorites(context, data2)
+                            } else {
+                                FavoriteManager.addToFavorites(context, data2)
+                            }
+                            isFavorite = !isFavorite
+                        }
                     }
 
                 }
@@ -165,12 +182,26 @@ class DetailActivity : BaseActivity() {
                     Spacer(modifier = Modifier.height(40.dp))
                 }
 
-
+                item {
+                    Box(
+                        modifier = Modifier
+                            .fillMaxWidth()
+                            .padding(20.dp),
+                        contentAlignment = Alignment.BottomCenter
+                    ) {
+                        androidx.compose.material.Button(
+                            onClick = {
+                                cartManager.addVegetable(data2)
+                            },
+                            modifier = Modifier.fillMaxWidth()
+                        ) {
+                            Text("Забронировать")
+                        }
+                    }
+                }
             }
         }
     }
-
-
 }
 
 fun getNurseriesByCity(city: String?): List<Nursery> {
