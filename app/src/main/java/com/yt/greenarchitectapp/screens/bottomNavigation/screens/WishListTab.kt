@@ -92,20 +92,14 @@ fun WishListTab(
                             navController.popBackStack()
                         }
                         Spacer(modifier = Modifier.width(10.dp))
-                        CommonIconButton(icon = R.drawable.plant) {
-                            context.launchActivity<CartActivity> { }
-                        }
+                        Text34_700(
+                            text = "Избранное",
+                            color = Color.Black,
+                            modifier = Modifier.padding(start = 20.dp)
+                        )
                     }
                 }
                 Spacer(modifier = Modifier.height(2.dp))
-            }
-
-            item {
-                Text34_700(
-                    text = "Забронированное",
-                    color = Color.Black,
-                    modifier = Modifier.padding(start = 20.dp)
-                )
             }
 
             items(favoriteItems) { vegetable ->

@@ -62,9 +62,6 @@ fun NotesScreen(
                     .padding(16.dp),
                 verticalAlignment = Alignment.CenterVertically
             ) {
-                CommonIconButton(icon = R.drawable.back) {
-
-                }
                 Text(
                     text = "Мои заметки",
                     modifier = Modifier.weight(1f),

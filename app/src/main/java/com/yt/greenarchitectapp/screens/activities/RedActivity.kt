@@ -7,6 +7,7 @@ import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.material.Surface
+import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -117,6 +118,8 @@ class RedActivity : ComponentActivity() {
                         }
                     }
                     Spacer(modifier = Modifier.height(16.dp))
+
+
                     CommonButton(
                         text = "Забронировать",
                         backgroundColor = orange,
